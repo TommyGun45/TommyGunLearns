@@ -1,0 +1,455 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+
+namespace CH3
+{
+    class Program
+    {
+
+
+        static void Main(string[] args)
+        {
+            //Introduction with information about the quiz
+            Console.WriteLine("*******************************************************************");
+            Console.WriteLine("Welcome to the Paintball Quiz!");
+            Console.WriteLine("My name is TommyGun and I will be your host for this quiz!");
+            Console.WriteLine("This quiz brought to you by School!");
+            Console.WriteLine("*******************************************************************");
+
+            //Bool operations to tally questions correct/incorrect for the second loop
+
+            int correct = 0;
+            int wrong = 0;
+            bool correct_answer1 = false;
+            bool correct_answer2 = false;
+            bool correct_answer3 = false;
+            bool correct_answer4 = false;
+            bool correct_answer5 = false;
+            bool correct_answer6 = false;
+            bool correct_answer7 = false;
+            bool correct_answer8 = false;
+            bool correct_answer9 = false;
+            bool correct_answer10 = false;
+
+            //Bool operations for an invalid character added. 
+            //This will allow the user to repeat the question if an invalid character is added.
+
+            bool invalid_answer1 = false;
+            bool invalid_answer2 = false;
+            bool invalid_answer3 = false;
+            bool invalid_answer4 = false;
+            bool invalid_answer5 = false;
+            bool invalid_answer6 = false;
+            bool invalid_answer7 = false;
+            bool invalid_answer8 = false;
+            bool invalid_answer9 = false;
+            bool invalid_answer10 = false;
+            char userInput;
+
+            //This is for the start of the loop count
+
+            for (int i = 1; i <= 2; i++)
+            {
+                //This will show on the second loop
+                if (i == 2)
+                {
+                    Console.WriteLine("Now you will have a chance to retake the questions you missed.");
+                    Console.ReadKey();
+                }
+
+                //Question are written to display question and answers at same time
+                //Upon Quiz start, the first question will be shown
+
+                if (i == 1 || correct_answer1 == false)
+                {
+                    //The Do While loop is there for an invalid response
+                    do
+                    {
+                        Console.WriteLine("Question #1. Multiple Choice");
+                        Console.WriteLine("If all protective padding is worn, paintball is statistically shown to be safer than what sport(s)");
+                        Console.WriteLine("A. Golf");
+                        Console.WriteLine("B. Tennis");
+                        Console.WriteLine("C. Swimming");
+                        Console.WriteLine("D. All of the above");
+
+                        Console.WriteLine("Please select the correct answer\r\n");
+
+                        //Changed from string to userInput for easier tracking
+                        //Easier comparison for finding the answer
+                        //Will also record user input
+
+                        userInput = Console.ReadKey().KeyChar;
+                        Console.WriteLine("You selected: {0}", userInput);
+
+                        //Using 'If' and 'Else' to determine if answer is correct
+                        //Provides different responses based on user input
+                        //Will state if answer is right or wrong
+
+                        if (userInput.Equals('D') || userInput.Equals('d'))
+
+                        {
+                            Points();
+                            correct++;
+                            correct_answer1 = true;
+                            invalid_answer1 = true;
+                            //changed to include all the correct inputs for the test.
+                            //Makes it easier to compare correct and incorrect character respones. 
+                        }
+                        else if (userInput.Equals('a') || userInput.Equals('A') || userInput.Equals('b') || userInput.Equals('B') || userInput.Equals('c') || userInput.Equals('C'))
+                        {
+                            NegativePoints();
+                            wrong++;
+                            correct_answer1 = false;
+                            invalid_answer1 = true;
+                        }
+                        //Added for invalid responses
+                        else
+                        {
+                            ValidAnswer();
+                        }
+                        //will allow the user to retake the question when an invalid character is pressed.
+                    } while (invalid_answer1 == false);
+                }
+                //Next question will display after previous one is answered
+                //The same code is used for all questions
+                if (i == 1 || correct_answer2 == false)
+                {
+                    do
+                    {
+                        Console.WriteLine("Question #2. Multiple Choice");
+                        Console.WriteLine("Which company created the first automatic paintball gun?");
+                        Console.WriteLine("A. Spyder");
+                        Console.WriteLine("B. Tippmann");
+                        Console.WriteLine("C. Dye");
+                        Console.WriteLine("D. Bob Long");
+
+                        Console.WriteLine("Please select the correct answer");
+
+                        char userInput1 = Console.ReadKey().KeyChar;
+                        Console.WriteLine("\r\nYou selected: {0}", userInput1);
+                        if (userInput1.Equals('B') || userInput1.Equals('b'))
+                        {
+                            Points();
+                            correct++;
+                            correct_answer2 = true;
+                            invalid_answer2 = true;
+                        }
+
+
+                        else if (userInput1.Equals('a') || userInput1.Equals('A') || userInput1.Equals('d') || userInput1.Equals('D') || userInput1.Equals('c') || userInput1.Equals('C'))
+                        {
+                            NegativePoints();
+                            wrong++;
+                            invalid_answer2 = true;
+                        }
+
+                        else
+                        {
+                            ValidAnswer();
+                        }
+                    } while (invalid_answer2 == false);
+                    if (i == 1 || correct_answer3 == false)
+                    {
+                        do
+                        {
+                            Console.WriteLine("Question #3. Ture or False");
+                            Console.WriteLine("Paintball's were desgined to be used by foresters and farmers to mark trees and cattle.");
+                            Console.WriteLine("A. True");
+                            Console.WriteLine("B. False");
+
+                            Console.WriteLine("Please select the correct answer");
+                            char userInput2 = Console.ReadKey().KeyChar;
+                            Console.WriteLine("\r\nYou selected: {0}", userInput2);
+                            if (userInput2.Equals('A') || userInput2.Equals('a'))
+                            {
+                                Points();
+                                correct++;
+                                correct_answer3 = true;
+                                invalid_answer3 = true;
+                            }
+                            else if (userInput2.Equals('b') || userInput2.Equals('B'))
+                            {
+                                NegativePoints();
+                                wrong++;
+                                invalid_answer3 = true;
+                            }
+                            else
+                            {
+                                ValidAnswer();
+                            }
+                        } while (invalid_answer3 == false);
+                        if (i == 1 || correct_answer4 == false)
+                        {
+                            do
+                            {
+                                Console.WriteLine("Question #4. Multiple Choice");
+                                Console.WriteLine("Most paintball masks are max rated to what Feet per second (FPS)?");
+                                Console.WriteLine("A. 300 FPS");
+                                Console.WriteLine("B. 250 FPS");
+                                Console.WriteLine("C. 285 FPS");
+                                Console.WriteLine("D. 275 FPS");
+
+                                Console.WriteLine("Please select the correct answer");
+                                char userInput3 = Console.ReadKey().KeyChar;
+                                Console.WriteLine("\r\nYou selected: {0}", userInput3);
+                                if (userInput3.Equals('A') || userInput3.Equals('a'))
+                                {
+                                    Points();
+                                    correct++;
+                                    correct_answer4 = true;
+                                    invalid_answer4 = true;
+                                }
+                                else if (userInput3.Equals('b') || userInput3.Equals('B') || userInput3.Equals('d') || userInput3.Equals('D') || userInput3.Equals('c') || userInput3.Equals('C'))
+                                {
+                                    NegativePoints();
+                                    wrong++;
+                                    invalid_answer4 = true;
+                                }
+                                else
+                                {
+                                    ValidAnswer();
+                                }
+                            } while (invalid_answer4 == false);
+                            if (i == 1 || correct_answer5 == false)
+                            {
+                                do
+                                {
+                                    Console.WriteLine("Question #5. Multiple Choice");
+                                    Console.WriteLine("What year was the first professional paintball league created?");
+                                    Console.WriteLine("A. 1990");
+                                    Console.WriteLine("B. 1985");
+                                    Console.WriteLine("C. 1992");
+                                    Console.WriteLine("D. 1995");
+
+                                    Console.WriteLine("Please select the correct answer");
+                                    char userInput4 = Console.ReadKey().KeyChar;
+                                    Console.WriteLine("\r\nYou selected: {0}", userInput4);
+                                    if (userInput4.Equals('C') || userInput4.Equals('c'))
+                                    {
+                                        Points();
+                                        correct++;
+                                        correct_answer5 = true;
+                                        invalid_answer5 = true;
+                                    }
+                                    else if (userInput4.Equals('a') || userInput4.Equals('A') || userInput4.Equals('d') || userInput4.Equals('D') || userInput4.Equals('b') || userInput4.Equals('B'))
+                                    {
+                                        NegativePoints();
+                                        wrong++;
+                                        invalid_answer5 = true;
+
+                                    }
+                                    else
+                                    {
+                                        ValidAnswer();
+                                    }
+                                } while (invalid_answer5 == false);
+                                if (i == 1 || correct_answer6 == false)
+                                {
+                                    do
+                                    {
+                                        Console.WriteLine("Question #6. Ture or False");
+                                        Console.WriteLine("If a paintball hits you but doesn't break, you are still in the game.");
+                                        Console.WriteLine("A. True");
+                                        Console.WriteLine("B. False");
+
+                                        Console.WriteLine("Please select the correct answer");
+                                        char userInput5 = Console.ReadKey().KeyChar;
+                                        Console.WriteLine("\r\nYou selected: {0}", userInput5);
+                                        if (userInput5.Equals('A') || userInput5.Equals('a'))
+                                        {
+                                            Points();
+                                            correct++;
+                                            correct_answer6 = true;
+                                            invalid_answer6 = true;
+                                        }
+                                        else if (userInput5.Equals('c') || userInput5.Equals('C') || userInput5.Equals('d') || userInput5.Equals('D') || userInput5.Equals('b') || userInput5.Equals('B'))
+                                        {
+
+                                            NegativePoints();
+                                            wrong++;
+                                            invalid_answer6 = true;
+                                        }
+                                        else
+                                        {
+                                            ValidAnswer();
+
+                                        }
+                                    } while (invalid_answer6 == false);
+                                    if (i == 1 || correct_answer7 == false)
+                                    {
+                                        do
+                                        {
+                                            Console.WriteLine("Question #7. Ture or False");
+                                            Console.WriteLine("Paintball is an outdoor sport only.");
+                                            Console.WriteLine("A. True");
+                                            Console.WriteLine("B. False");
+
+                                            Console.WriteLine("Please select the correct answer");
+                                            char userInput6 = Console.ReadKey().KeyChar;
+                                            Console.WriteLine("\r\nYou selected: {0}", userInput6);
+                                            if (userInput6.Equals('B') || userInput6.Equals('b'))
+                                            {
+                                                Points();
+                                                correct++;
+                                                correct_answer7 = true;
+                                                invalid_answer7 = true;
+                                            }
+                                            else if (userInput6.Equals('A') || userInput6.Equals('a'))
+                                            {
+                                                NegativePoints();
+                                                wrong++;
+                                                invalid_answer7 = true;
+                                            }
+                                            else
+                                            {
+                                                ValidAnswer();
+
+                                            }
+                                        } while (invalid_answer7 == false);
+                                        if (i == 1 || correct_answer8 == false)
+                                        {
+                                            do
+                                            {
+                                                Console.WriteLine("Question #8. Ture or False");
+                                                Console.WriteLine("There are many different types of fields for paintball.");
+                                                Console.WriteLine("A. True");
+                                                Console.WriteLine("B. False");
+
+                                                Console.WriteLine("Please select the correct answer");
+                                                char userInput7 = Console.ReadKey().KeyChar;
+                                                Console.WriteLine("\r\nYou selected: {0}", userInput7);
+                                                if (userInput7.Equals('A') || userInput7.Equals('a'))
+                                                {
+                                                    Points();
+                                                    correct++;
+                                                    correct_answer8 = true;
+                                                    invalid_answer8 = true;
+                                                }
+                                                else if (userInput7.Equals('B') || userInput7.Equals('b'))
+                                                {
+                                                    NegativePoints();
+                                                    wrong++;
+                                                    invalid_answer8 = true;
+                                                }
+                                                else
+                                                {
+                                                    ValidAnswer();
+
+                                                }
+                                            } while (invalid_answer8 == false);
+                                            if (i == 1 || correct_answer9 == false)
+                                            {
+                                                do
+                                                {
+                                                    Console.WriteLine("Question #9. Multiple Choice");
+                                                    Console.WriteLine("What is the fill og a paintball made from?");
+                                                    Console.WriteLine("A. Paint");
+                                                    Console.WriteLine("B. Water");
+                                                    Console.WriteLine("C. Non-Toxic Gelatin");
+                                                    Console.WriteLine("D. Colored Paste");
+
+                                                    Console.WriteLine("Please select the correct answer");
+                                                    char userInput8 = Console.ReadKey().KeyChar;
+                                                    Console.WriteLine("\r\nYou selected: {0}", userInput8);
+                                                    if (userInput8.Equals('C') || userInput8.Equals('c'))
+                                                    {
+                                                        Points();
+                                                        correct++;
+                                                        correct_answer9 = true;
+                                                        invalid_answer9 = true;
+                                                    }
+                                                    else if (userInput8.Equals('a') || userInput8.Equals('A') || userInput8.Equals('d') || userInput8.Equals('D') || userInput8.Equals('b') || userInput8.Equals('B'))
+                                                    {
+                                                        NegativePoints();
+                                                        wrong++;
+                                                        invalid_answer9 = true;
+                                                    }
+                                                    else
+                                                    {
+                                                        ValidAnswer();
+                                                    }
+                                                } while (invalid_answer9 == false);
+                                                if (i == 1 || correct_answer10 == false)
+                                                    do
+                                                    {
+                                                        {
+                                                            Console.WriteLine("Question #10. Multiple Choice");
+                                                            Console.WriteLine("What type of gas can a paintball marker(gun) use?");
+                                                            Console.WriteLine("A. Compressed Air");
+                                                            Console.WriteLine("B. Co2");
+                                                            Console.WriteLine("C. Propane");
+                                                            Console.WriteLine("D. All of the above");
+
+                                                            Console.WriteLine("Please select the correct answer");
+                                                            char userInput9 = Console.ReadKey().KeyChar;
+                                                            Console.WriteLine("\r\nYou selected: {0}", userInput9);
+                                                            if (userInput9.Equals('D') || userInput9.Equals('d'))
+
+                                                            {
+                                                                Console.WriteLine("----Correct----");
+                                                                Console.WriteLine("****END OF QUIZ****");
+                                                                correct++;
+                                                                correct_answer10 = true;
+                                                                invalid_answer10 = true;
+                                                            }
+                                                            else if (userInput9.Equals('a') || userInput9.Equals('A') || userInput9.Equals('c') || userInput9.Equals('C') || userInput9.Equals('b') || userInput9.Equals('B'))
+                                                            {
+                                                                Console.WriteLine("----Incorrect----");
+                                                                Console.WriteLine("****END OF QUIZ****");
+                                                                wrong++;
+                                                                invalid_answer10 = true;
+                                                            }
+                                                            else
+                                                            {
+                                                                ValidAnswer();
+                                                            }
+                                                        }
+                                                    } while (invalid_answer10 == false);
+
+
+                                                //Once final question has been answered
+                                                //The End of Quiz line will be displayed
+                                                //The message at top will be displayed
+                                                //The user will be able to answer any missed questions
+                                                //Once the second loop is done, it will show number of correct and number of incorrect total. 
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            //This appears after the second loop once all missed questions were re-answered.
+            //If the user gets all of them correct, this will show 10 correct and a second loop is not needed. 
+            Console.WriteLine("You got this many correct: {0}", correct);
+            Console.WriteLine("You got this many wrong: {0}", wrong);
+            Console.ReadKey();
+        }
+
+        static void ValidAnswer()
+        {
+            Console.WriteLine("\r\nPlease provide a valid response\r\n");
+        }
+
+        static void Points()
+        {
+            Console.WriteLine("\r\n----Correct----\r\n");
+            Console.WriteLine("Next Question");
+
+        }
+
+        static void NegativePoints()
+        {
+            Console.WriteLine("\r\n----Incorrect----\r\n");
+            Console.WriteLine("Next Question");
+
+        }
+
+    }
+}
