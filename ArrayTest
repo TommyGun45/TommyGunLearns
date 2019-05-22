@@ -4,109 +4,139 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-
-namespace CH3ThompsonMatthew
+namespace ArrayTeachingExample
 {
-    class Program
+    public class Program
     {
-
-
-        static void Main(string[] args)
-
+        public static void Main(string[] args)
         {
             Console.WriteLine("*******************************************************************");
             Console.WriteLine("Welcome to the Paintball Quiz!");
-            Console.WriteLine("My name is Matthew Thompson and I will be your host for this quiz!");
-            Console.WriteLine("This quiz brought to you by ENGR 115!");
+            Console.WriteLine("My name is TommyGun and I will be your host for this quiz!");
+            Console.WriteLine("This quiz brought to you by School!");
             Console.WriteLine("*******************************************************************");
+
+            // Contains all prompts to the user - setup before the application gets into the run loop
+            var promptArray = new string[5];
+
+            // Contains the valid answer to each question
+            var validResponseArray = new char[5];
+                                                            
+            // Contains validity of the users' input
+            var checkedResponses = new bool[5];
+
+            // SET UP ALL POSSIBLE RESPONSE CHARACTERS            
+            var possibleResponses = new char[4];
+            possibleResponses[0] = 'A';
+            possibleResponses[1] = 'B';
+            possibleResponses[2] = 'C';
+            possibleResponses[3] = 'D';
+
+            var TrueFalseResponsesArray = new char[2];
+
+            var TrueFalseResponses = new char[2];
+            TrueFalseResponses[0] = 'A';
+            TrueFalseResponses[1] = 'B';
+
+            // SET UP PROMPTS & ANSWERS
+            promptArray[0] = "Question #1. Multiple Choice. If all protective padding is worn, paintball is statistically shown to be safer than what sport(s)? \r\n A. Golf \r\n B. Tennis \r\n C. Swimming \r\n D. All of the Above \r\n Please select the correct answer.";
+            validResponseArray[0] = 'D';
+            promptArray[1] = "Question #2. Multiple Choice. Which company created the first automatic paintball gun? \r\n A. Spyder \r\n B. Tippmann \r\n C. Dye \r\n D. Bob Long \r\n Please select the correct answer.";
+            validResponseArray[1] = 'B';
+            promptArray[2] = "Question #3. Multiple Choice. Most paintball masks are max rated to what Feet per second (FPS)? \r\n A. 300 FPS \r\n B. 250 FPS \r\n C. 285 FPS \r\n D. 275 FPS";
+            validResponseArray[2] = 'A';
+            promptArray[3] = "Question #4. Multiple Choice. What year was the first professional paintball league created? \r\n A. 1990 \r\n B. 1985 \r\n C. 1992 \r\n D. 1995";
+            validResponseArray[3] = 'C';
+            promptArray[4] = "Question #5. Multiple Choice. What is the fill of a paintball made from? \r\n A. Paint \r\n B. Water \r\n C. Non-Toxic Gelatin \r\n D. Colored Paste";
+            validResponseArray[4] = 'C';
+
+
+            // LOOP OVER ALL OF THE PROMPTS
+            for (int i = 0; i < promptArray.Length; i++)
             {
-                string[] Question = new string[10];
-                Question[0] = "Question #1. Multiple Choice \r\n If all protective padding is worn, paintball is statistically shown to be safer than what sport(s)? \r\n A. Golf \r\n B. Tennis \r\n C. Swimming \r\n D. All of the above \r\n Please select the correct answer \r\n";
-                Question[1] = "Question #2. Multiple Choice \r\n Which company created the first automatic paintball gun?";
-                Question[2] = "Question #3. True/False \r\n Paintball's were desgined to be used by foresters and farmers to mark trees and cattle.";
-                Question[3] = "Question #4. Multiple Choice \r\n Most paintball masks are max rated to what Feet per second (FPS)?";
-                Question[4] = "Question #5. Multiple Choice \r\n What year was the first professional paintball league created?";
-                Question[5] = "Question #6. True/False \r\n If a paintball hits you but doesn't break, you are still in the game.";
-                Question[6] = "Question #7. True/False \r\n Paintball is an outdoor sport only.";
-                Question[7] = "Question #8. True/False \r\n There are many different types of fields for paintball.";
-                Question[8] = "Question #9. Multiple Choice. \r\n What is the fill of a paintball made from?";
-                Question[9] = "Question #10. What type of gas can a paintball marker(gun) use?";
 
-                var CorrectAnswersArray = new char[10];
-                correctAnswers[0] = 'D';
-                correctAnswers[1] = 'B';
-                correctAnswers[2] = 'A';
-                correctAnswers[3] = 'A';
-                correctAnswers[4] = 'C';
-                correctAnswers[5] = 'A';
-                correctAnswers[6] = 'B';
-                correctAnswers[7] = 'A';
-                correctAnswers[8] = 'C';
-                correctAnswers[9] = 'D';
+                Console.WriteLine(promptArray[i]);
 
-                var CorrectCheck = new bool[10];
-                bool correct_answer1 = false;
-                bool correct_answer2 = false;
-                bool correct_answer3 = false;
-                bool correct_answer4 = false;
-                bool correct_answer5 = false;
-                bool correct_answer6 = false;
-                bool correct_answer7 = false;
-                bool correct_answer8 = false;
-                bool correct_answer9 = false;
-                bool correct_answer10 = false;
-
-                var IncorrectCheck = new bool[10];
-                bool invalid_answer1 = false;
-                bool invalid_answer2 = false;
-                bool invalid_answer3 = false;
-                bool invalid_answer4 = false;
-                bool invalid_answer5 = false;
-                bool invalid_answer6 = false;
-                bool invalid_answer7 = false;
-                bool invalid_answer8 = false;
-                bool invalid_answer9 = false;
-                bool invalid_answer10 = false;
-
-                var possibleResponses = new char[4];
-                possibleResponses[0] = 'A';
-                possibleResponses[1] = 'B';
-                possibleResponses[2] = 'C';
-                possibleResponses[3] = 'D';
-
-                Question[0] = "Question #1. Multiple Choice \r\n If all protective padding is worn, paintball is statistically shown to be safer than what sport(s)? \r\n A. Golf \r\n B. Tennis \r\n C. Swimming \r\n D. All of the above \r\n Please select the correct answer \r\n";
-                CorrectAnswersArray[0] = 'D';
-                Question[1] = "Question #2. Multiple Choice \r\n Which company created the first automatic paintball gun?";
-                CorrectAnswersArray[1] = 'B';
-
-                for (int i = 1; i <= 2; i++)
+                // READ FIRST CHARACTER FROM THE INPUT
+                var input = Console.ReadKey();
+                Console.WriteLine();
+                //  TURN INPUT INTO A STRING, UPPERCASE AND STORE IT
+                char response = input.KeyChar.ToString().ToUpper().First(); // we know it's only 1 character long so hard-coding the first position of the string position is ok
+                Console.WriteLine($"we got {response}");
+                // VALIDATE THAT THE USER PROVIDED AN ACTUAL RESPONSE
+                while (!possibleResponses.Contains(response))
                 {
-                    Console.WriteLine("Now you will have a chance to retake the questions you missed.");
-                    Console.ReadKey();
+                    Console.WriteLine(
+                        $"{response} is an invalid entry, please try again.  Valid entries are \"A, B, C, or D\"");
 
-                    var input = Console.ReadKey();
+                    // READ FIRST CHARACTER FROM THE INPUT
+                    input = Console.ReadKey();
                     Console.WriteLine();
-                    char response = input.KeyChar.ToString().ToUpper().First();
-                    Console.WriteLine("You seleceted {response}");
-                    while (!possibleResponses.Contains(response))
-                    {
-                        Console.WriteLine("\r\nPlease provide a valid response\r\n");
-                        input = Console.ReadKey();
-                        Console.WriteLine();
-                        response = input.KeyChar.ToString().ToUpper().First();
-                    }
+                    //  TURN INPUT INTO A STRING, UPPERCASE AND STORE IT
+                    response = input.KeyChar.ToString().ToUpper().First();
 
-                    CorrectCheck[i] = (response == CorrectAnswersArray[i]);
                 }
 
-                for (int i = 0; i <= 2; i++) ;
-                if (CorrectCheck[i] == true)
-                {
-                    continue;
-                }
-            
+                // AT THIS POINT WE HAVE A VALID ENTRY - LETS STORE THE VALIDITY
+                // THE RIGHT SIDE HERE WILL RESOLVE TO A TRUE OR FALSE THEN STORE INTO CHECKEDRESPONSES                
+                checkedResponses[i] = (response == validResponseArray[i]);
             }
 
+
+            // AT THIS POINT, checkedResponses will contain either true or false for every question - lets re-ask the false ones.
+            // BASICALLY A COPY PASTA FROM ABOVE EXCEPT FOR THE CORRECT CHECK
+            // LOOP OVER ALL OF THE PROMPTS
+            for (int i = 0; i < promptArray.Length; i++)
+            {
+                // IF WE HAVE THE CORRECT ANSWER, THIS TRIGGERS
+                if (checkedResponses[i] == true)
+                {
+                    // GO TO THE NEXT QUESTION - DISREGARD INPUT
+                    continue;
+                }
+
+                Console.WriteLine("You got this question incorrect, re-asking.");
+                Console.WriteLine(promptArray[i]);
+
+                // READ FIRST CHARACTER FROM THE INPUT
+                var input = Console.ReadKey();
+                Console.WriteLine();
+                //  TURN INPUT INTO A STRING, UPPERCASE AND STORE IT
+                char response = input.KeyChar.ToString().ToUpper().First(); // we know it's only 1 character long so hard-coding the first position of the string position is ok
+
+                // VALIDATE THAT THE USER PROVIDED AN ACTUAL RESPONSE
+                while (!possibleResponses.Contains(response))
+                {
+                    Console.WriteLine(
+                        $"{response} is an invalid entry, please try again.  Valid entries are \"A, B, C, or D\"");
+
+                    // READ FIRST CHARACTER FROM THE INPUT
+                    input = Console.ReadKey();
+                    Console.WriteLine();
+                    //  TURN INPUT INTO A STRING, UPPERCASE AND STORE IT
+                    response = input.KeyChar.ToString().ToUpper().First();
+
+                }
+
+                // AT THIS POINT WE HAVE A VALID ENTRY - LETS STORE THE VALIDITY
+                // THE RIGHT SIDE HERE WILL RESOLVE TO A TRUE OR FALSE THEN STORE INTO CHECKEDRESPONSES                
+                checkedResponses[i] = (response == validResponseArray[i]);
+            }
+
+            int score = 0;
+            for (int j = 0; j < checkedResponses.Length; j++)
+            {
+                if (checkedResponses[j] == true)
+                {
+                    score += 1;
+                }
+            }
+
+            // Need to cast the score to double to get the precision correct for percentage
+            Console.WriteLine(
+                $"Your score was {score}/{checkedResponses.Length} OR {(double)score / checkedResponses.Length:P2}");
+            Console.WriteLine("This is the end of the quiz!");
+            Console.ReadLine();
         }
     }
 }
