@@ -1,0 +1,112 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+
+namespace CH3ThompsonMatthew
+{
+    class Program
+    {
+
+
+        static void Main(string[] args)
+
+        {
+            Console.WriteLine("*******************************************************************");
+            Console.WriteLine("Welcome to the Paintball Quiz!");
+            Console.WriteLine("My name is Matthew Thompson and I will be your host for this quiz!");
+            Console.WriteLine("This quiz brought to you by ENGR 115!");
+            Console.WriteLine("*******************************************************************");
+            {
+                string[] Question = new string[10];
+                Question[0] = "Question #1. Multiple Choice \r\n If all protective padding is worn, paintball is statistically shown to be safer than what sport(s)? \r\n A. Golf \r\n B. Tennis \r\n C. Swimming \r\n D. All of the above \r\n Please select the correct answer \r\n";
+                Question[1] = "Question #2. Multiple Choice \r\n Which company created the first automatic paintball gun?";
+                Question[2] = "Question #3. True/False \r\n Paintball's were desgined to be used by foresters and farmers to mark trees and cattle.";
+                Question[3] = "Question #4. Multiple Choice \r\n Most paintball masks are max rated to what Feet per second (FPS)?";
+                Question[4] = "Question #5. Multiple Choice \r\n What year was the first professional paintball league created?";
+                Question[5] = "Question #6. True/False \r\n If a paintball hits you but doesn't break, you are still in the game.";
+                Question[6] = "Question #7. True/False \r\n Paintball is an outdoor sport only.";
+                Question[7] = "Question #8. True/False \r\n There are many different types of fields for paintball.";
+                Question[8] = "Question #9. Multiple Choice. \r\n What is the fill of a paintball made from?";
+                Question[9] = "Question #10. What type of gas can a paintball marker(gun) use?";
+
+                var CorrectAnswersArray = new char[10];
+                correctAnswers[0] = 'D';
+                correctAnswers[1] = 'B';
+                correctAnswers[2] = 'A';
+                correctAnswers[3] = 'A';
+                correctAnswers[4] = 'C';
+                correctAnswers[5] = 'A';
+                correctAnswers[6] = 'B';
+                correctAnswers[7] = 'A';
+                correctAnswers[8] = 'C';
+                correctAnswers[9] = 'D';
+
+                var CorrectCheck = new bool[10];
+                bool correct_answer1 = false;
+                bool correct_answer2 = false;
+                bool correct_answer3 = false;
+                bool correct_answer4 = false;
+                bool correct_answer5 = false;
+                bool correct_answer6 = false;
+                bool correct_answer7 = false;
+                bool correct_answer8 = false;
+                bool correct_answer9 = false;
+                bool correct_answer10 = false;
+
+                var IncorrectCheck = new bool[10];
+                bool invalid_answer1 = false;
+                bool invalid_answer2 = false;
+                bool invalid_answer3 = false;
+                bool invalid_answer4 = false;
+                bool invalid_answer5 = false;
+                bool invalid_answer6 = false;
+                bool invalid_answer7 = false;
+                bool invalid_answer8 = false;
+                bool invalid_answer9 = false;
+                bool invalid_answer10 = false;
+
+                var possibleResponses = new char[4];
+                possibleResponses[0] = 'A';
+                possibleResponses[1] = 'B';
+                possibleResponses[2] = 'C';
+                possibleResponses[3] = 'D';
+
+                Question[0] = "Question #1. Multiple Choice \r\n If all protective padding is worn, paintball is statistically shown to be safer than what sport(s)? \r\n A. Golf \r\n B. Tennis \r\n C. Swimming \r\n D. All of the above \r\n Please select the correct answer \r\n";
+                CorrectAnswersArray[0] = 'D';
+                Question[1] = "Question #2. Multiple Choice \r\n Which company created the first automatic paintball gun?";
+                CorrectAnswersArray[1] = 'B';
+
+                for (int i = 1; i <= 2; i++)
+                {
+                    Console.WriteLine("Now you will have a chance to retake the questions you missed.");
+                    Console.ReadKey();
+
+                    var input = Console.ReadKey();
+                    Console.WriteLine();
+                    char response = input.KeyChar.ToString().ToUpper().First();
+                    Console.WriteLine("You seleceted {response}");
+                    while (!possibleResponses.Contains(response))
+                    {
+                        Console.WriteLine("\r\nPlease provide a valid response\r\n");
+                        input = Console.ReadKey();
+                        Console.WriteLine();
+                        response = input.KeyChar.ToString().ToUpper().First();
+                    }
+
+                    CorrectCheck[i] = (response == CorrectAnswersArray[i]);
+                }
+
+                for (int i = 0; i <= 2; i++) ;
+                if (CorrectCheck[i] == true)
+                {
+                    continue;
+                }
+            
+            }
+
+        }
+    }
+}
