@@ -1,0 +1,113 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace CH4ThompsonMatthew
+{ 
+    public class Program
+    {
+        public static void Main(string[] args)
+        {// Standard Introduction that will only be displayed upon quiz start
+            Console.WriteLine("*******************************************************************");
+            Console.WriteLine("Welcome to the Paintball Quiz!");
+            Console.WriteLine("My name is TommyGun and I will be your host for this quiz!");
+            Console.WriteLine("This quiz brought to you by school!");
+            Console.WriteLine("*******************************************************************");
+
+            //Int that will count every time a question is answered correct/incorrect and will display that number at the end of the second loop. 
+            int points = 0;
+            int negativepoints = 0;
+
+            //Bool operation for easier loop creation. Once the a valid input is added and if it's the correct answer, it will be set to true. No need to repeat a question that was answered correctly. 
+            bool[] invalid = { false, false, false, false, false, false, false, false, false, false };
+            bool[] ans = { false, false, false, false, false, false, false, false, false, false };
+
+            //Correct answers array for easier comparision with the users input. 
+            string[] correctAnswers = new string[10];
+            correctAnswers[0] = "D";
+            correctAnswers[1] = "B";
+            correctAnswers[2] = "A";
+            correctAnswers[3] = "C";
+            correctAnswers[4] = "C";
+            correctAnswers[5] = "D";
+            correctAnswers[6] = "A";
+            correctAnswers[7] = "A";
+            correctAnswers[8] = "B";
+            correctAnswers[9] = "A";
+
+            // Contains all questions. This also matches up with the correctAnswers array. Setting it up this way will only display one question at a time. 
+            // I found the \r\n function and added it to most of the code for a better look on the output. 
+            //With having the questions and answers on the same line, saves tons of space. 
+            string[] QuestionArray = new string[10];
+            QuestionArray[0] = "Question #1. Multiple Choice. If all protective padding is worn, paintball is statistically shown to be safer than what sport(s)? \r\n A. Golf \r\n B. Tennis \r\n C. Swimming \r\n D. All of the Above.";
+            QuestionArray[1] = "Question #2. Multiple Choice. Which company created the first automatic paintball gun? \r\n A. Spyder \r\n B. Tippmann \r\n C. Dye \r\n D. Bob Long";
+            QuestionArray[2] = "Question #3. Multiple Choice. Most paintball masks are max rated to what Feet per second (FPS)? \r\n A. 300 FPS \r\n B. 250 FPS \r\n C. 285 FPS \r\n D. 275 FPS";
+            QuestionArray[3] = "Question #4. Multiple Choice. What year was the first professional paintball league created? \r\n A. 1990 \r\n B. 1985 \r\n C. 1992 \r\n D. 1995";
+            QuestionArray[4] = "Question #5. Multiple Choice. What is the fill of a paintball made from? \r\n A. Paint \r\n B. Water \r\n C. Non-Toxic Gelatin \r\n D. Colored Paste";
+            QuestionArray[5] = "Question #6. Multiple Choice. What type of gas can a paintball marker(gun) use? \r\n A. Compressed Air \r\n B. C02 \r\n C. Propane \r\n D. All of the Above";
+            QuestionArray[6] = "Question #7. True/False. Paintball's were desgined to be used by foresters and farmers to mark trees and cattle. \r\n A. True \r\n B. False";
+            QuestionArray[7] = "Question #8. True/False. If a paintball hits you but doesn't break, you are still in the game. \r\n A. True \r\n B. False";
+            QuestionArray[8] = "Question #9. True/False. Paintball is an outdoor sport only. \r\n A. True \r\n B. False";
+            QuestionArray[9] = "Question #10. True/False. There are many different types of fields for paintball. \r\n A. True \r\n B. False";
+
+            //This is the start of the code that tracks user input. 
+            string[] userAnswer = new string[10];
+
+            //For loop created for the first cycle of questions. 
+            for (int i = 0; i < 2; i++)
+            {
+                if (i == 1)
+                {//Message will display before the second loop letting the user know that they will have an oppotunity to retake missed questoins. 
+                    Console.WriteLine("Now you will have a chance to retake the questions you missed. \r\n");
+                }
+                for (int j = 0; j < 10; j++)
+                {
+                    if (i == 0 || ans[j] == false)
+                    {
+                        do
+                        {
+                            // Display Questions
+                            Console.WriteLine(QuestionArray[j]);
+                            // Allow user to enter true or false response
+                            //The ToUpper command is added to allow lower case answers without having to write extra code. 
+                            //It will make them Capital letters for comparision to the answers. 
+                            userAnswer[j] = Console.ReadLine().ToUpper().
+                            Console.WriteLine(" You selected:" + userAnswer[j]);
+                            //Will show user what they selected as the answer. 
+                            if (userAnswer[j] == correctAnswers[j])
+                            {//Prompt showing that the user got the answer correct.
+                                Console.WriteLine(" \r\n Your Answer is Correct! \r\n");
+                                //Tracking added here for every correct answer to display count at the end.
+                                points++;
+                                invalid[j] = false;
+                                ans[j] = true;
+                                //Setting ans[j] to true will ensure the question is not repeated on the second loop. 
+                            }
+                            //Else if condition entered for invalid responses. 
+                            else if (userAnswer[j] != "A" && userAnswer[j] != "B" && userAnswer[j] != "C" && userAnswer[j] != "D")
+                            {//Will allow the user to attempt the question again. 
+                                Console.WriteLine("\r\nYour Answer is invalid! Plese enter another one\r\n");
+                                invalid[j] = true;
+                            }
+                            else
+                            {//Prompt showing that the user got the answer incorrect. 
+                                Console.WriteLine("\r\nYour Answer is Incorrect!\r\n");
+                                //tracking added here for every incorrect answer to display count at the end. 
+                                negativepoints++;
+                                invalid[j] = false;
+                                //ans[j] will stay false since it was never set to true for question repeat during the second loop. 
+                            }
+                        } while (invalid[j] == true);
+                    }
+                }
+            }
+            //Final propmt after second loop showing how many questions were answered correctly/incorrectly total between the two tries. 
+            Console.WriteLine("You got this many right: " + points + "You got this many wrong: " + negativepoints);
+            Console.WriteLine("This is the end of the quiz!");
+            Console.WriteLine("Your final score is" points - negativepoints);
+            Console.ReadLine();
+        }
+    }
+}
