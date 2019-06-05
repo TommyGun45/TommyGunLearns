@@ -61,6 +61,7 @@ namespace CH4ThompsonMatthew
                 {//Message will display before the second loop letting the user know that they will have an oppotunity to retake missed questoins. 
                     Console.WriteLine("Now you will have a chance to retake the questions you missed. \r\n");
                 }
+
                 for (int j = 0; j < 10; j++)
                 {
                     if (i == 0 || ans[j] == false)
@@ -96,12 +97,26 @@ namespace CH4ThompsonMatthew
                                 //tracking added here for every incorrect answer to display count at the end. 
 
                                 invalid[j] = false;
-                                //ans[j] will stay false since it was never set to true for question repeat during the second loop. 
                             }
+                            //ans[j] will stay false since it was never set to true for question repeat during the second loop. 
+
                         } while (invalid[j] == true);
+
                     }
                 }
-            }
+                {
+                    for (int j = 0; j < 10; j++)
+                    {
+                        {
+                            if (i == 1 && ans[j] == false)
+                            {
+                                Console.WriteLine("This is the correct Answer:");
+                                Console.WriteLine(correctAnswers[j]);
+                            }
+                        }
+                    }
+                }
+            }                                       
             //Final propmt after second loop showing how many questions were answered correctly/incorrectly total between the two tries. 
             Console.WriteLine("You got this many right: " + points);
             Console.WriteLine("This is the end of the quiz!");
